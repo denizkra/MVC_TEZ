@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Sale";
+}
+<p></p>
+<h4 style="margin-left:40px;">İndirimli Ürünler</h4>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li style="margin-left:20px;">
+            @(item.urunAdi + " : " + item.yeniFiyat + " TL    % " + item.indirimYüzdesi + " indirimli.")
+        </li>
+    }
+</ul>
+    <p></p>

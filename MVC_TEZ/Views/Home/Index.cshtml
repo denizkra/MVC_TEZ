@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Index";
+    using (Html.BeginForm("Search", "Home", FormMethod.Post))
+    {
+        <p></p>
+<h4>Aranacak Ürün</h4>
+<input id="searchText" name="aranan" type="text" style="width:750px;" />
+<input id="searchButton" type="submit" value="ARA" />
+<p></p>
+        }
+    }

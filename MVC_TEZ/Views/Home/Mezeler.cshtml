@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Mezeler";
+}
+<h4>@ViewBag.Title</h4>
+@using (Html.BeginForm("Mezeler", "Home", FormMethod.Post))
+{
+    <h4>Aranacak Kelime</h4>
+    <input id="searchText" name="mezeara" type="text" style="width:750px;" />
+    <input id="searchButton" type="submit" value="ARA" />
+    <p></p>
+}
+<div class="card card-primary card-outline">
+    <div class="card-header">
+        @*<h5 class="m-0">Ürünler</h5>*@
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Ürün Adı</th>
+                    <th>Ürün Fiyatı</th>
+                    <th>Market</th>
+                    <th>Detay</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> @(item.urunAdi)</td>
+                    <td> @(item.fiyat + " TL ")</td>
+                    <td> @(item.marketAdi)</td>
+                    <td style="width:170px;">
+                        <a class="btn btn-default" href="/Kullanici/Detay/@item.urunID" title="Detay">
+                            <i class="fa fa-search"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

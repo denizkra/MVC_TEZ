@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Search";
+}
+
+@if (Model.Count > 0)
+{
+    using (Html.BeginForm("Search", "Home", FormMethod.Post))
+    {
+        <h4>Aranacak Ürün</h4>
+        <input id="searchText" name="aranan" type="text" style="width:750px;" />
+        <input id="searchButton" type="submit" value="ARA" />
+        <p></p>
+        <div class="card card-primary card-outline">
+            @*<div class="card-header">
+                <h5 class="m-0">Ürünler</h5>
+            </div>*@
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Ürün Adı</th>
+                            <th>Ürün Fiyatı</th>
+                            <th>Market</th>
+                            <th>Kategori</th>
+                            <th>İndirim Oranı</th>
+                            <th>Detay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (item.indirimYüzdesi > 0)
+                            {
+                                <tr style="color:red;">
+                                    <td> @(item.urunAdi)</td>
+                                    <td> @(item.fiyat + " TL ")</td>
+                                    <td> @(item.marketAdi)</td>
+                                    <td> @(item.altkategoriAdi)</td>
+                                    <td> @(item.indirimYüzdesi + " % ")</td>
+                                    <td style="width:170px;">
+                                        <a class="btn btn-default" href="/Home/Detay/@item.urunAdi" title="Detay">
+                                            <i class="fa fa-search"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td> @(item.urunAdi)</td>
+                                    <td> @(item.fiyat + " TL ")</td>
+                                    <td> @(item.marketAdi)</td>
+                                    <td> @(item.altkategoriAdi)</td>
+                                    <td> @(item.indirimYüzdesi + " % ")</td>
+                                    <td style="width:170px;">
+                                        <a class="btn btn-default" href="/Home/Detay/@item.urunAdi" title="Detay">
+                                            <i class="fa fa-search"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+}
